@@ -111,3 +111,6 @@ DOMAIN-SUFFIX,5ddd.com
 
 # b站空降助手
 DOMAIN-SUFFIX,bsbsb.top
+
+# MoviePilot CookieCloud
+DOMAIN-SUFFIX,movie-pilot.org
