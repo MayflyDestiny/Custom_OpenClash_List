@@ -20,5 +20,7 @@ DOMAIN-SUFFIX,dmhy.org
 DOMAIN-SUFFIX,mtalk.google.com
 # EA Desktop 云同步
 DOMAIN-SUFFIX,cloudsync-prod.s3.us-east-1.amazonaws.com
-# JavDB APP
+# 被墙地址
 DOMAIN-SUFFIX,tp-iu.cmastd.com
+DOMAIN-SUFFIX,cg51.com
+DOMAIN-SUFFIX,cast.fgegcqkk.xyz
