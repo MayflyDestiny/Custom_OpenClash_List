@@ -42,6 +42,7 @@ DOMAIN-SUFFIX,checkip.dyndns.org
 DOMAIN-SUFFIX,checkipv6.dyndns.org
 DOMAIN-SUFFIX,ifconfig.co
 DOMAIN-SUFFIX,api.myip.com
+DOMAIN-SUFFIX,giveup.top
 DOMAIN-SUFFIX,ipapi.co
 DOMAIN-SUFFIX,ip6.seeip.org
 DOMAIN-SUFFIX,kit327.com
@@ -63,6 +64,8 @@ DOMAIN-SUFFIX,powershellgallery.com
 DOMAIN-SUFFIX,pool.ntp.org
 # Dell
 DOMAIN-SUFFIX,dell.com
+# MicroSoft Rewards
+DOMAIN-SUFFIX,rewards.bing.com
 
 # FLiNG Trainer
 DOMAIN-SUFFIX,flingtrainer.com
@@ -100,14 +103,11 @@ DOMAIN-SUFFIX,bgm.tv
 DOMAIN-SUFFIX,chii.in
 DOMAIN-SUFFIX,bangumi.tv
 
+# 肥羊 All in One
+DOMAIN-SUFFIX,freetv.top
+
 # 雀魂麻将
 DOMAIN-SUFFIX,game.maj-soul.com
-
-# MicroSoft Rewards
-DOMAIN-SUFFIX,rewards.bing.com
-
-# fnOS
-DOMAIN-SUFFIX,5ddd.com
 
 # b站空降助手
 DOMAIN-SUFFIX,bsbsb.top
