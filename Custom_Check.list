@@ -4,6 +4,7 @@ DOMAIN-SUFFIX,vultr.com
 DOMAIN-SUFFIX,test-ipv6.com
 DOMAIN-SUFFIX,ipw.cn
 
+DOMAIN,a.nel.cloudflare.com
 DOMAIN,speed.cloudflare.com
 DOMAIN-SUFFIX,fast.com
 DOMAIN-SUFFIX,speedcheck.org
