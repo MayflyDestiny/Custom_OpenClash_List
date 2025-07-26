@@ -27,6 +27,8 @@ DOMAIN-SUFFIX,cloudsync-prod.s3.us-east-1.amazonaws.com
 DOMAIN-SUFFIX,hoyolab.com
 # OneDrive 网页版
 DOMAIN-SUFFIX,onedrive.live.com
+# 524游戏站
+DOMAIN-SUFFIX,www.524game.com
 # 被墙地址
 DOMAIN-SUFFIX,7pzzv.us
 DOMAIN-SUFFIX,tp-iu.cmastd.com
