@@ -2,7 +2,6 @@ IP-CIDR,142.251.215.0/24,no-resolve
 
 DOMAIN-SUFFIX,vultr.com
 DOMAIN-SUFFIX,test-ipv6.com
-DOMAIN-SUFFIX,ipw.cn
 
 DOMAIN,a.nel.cloudflare.com
 DOMAIN,speed.cloudflare.com
