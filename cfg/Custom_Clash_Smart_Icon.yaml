@@ -54,9 +54,9 @@ proxy-groups:
   - {name: ChatAI,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/AI.png}
   - {name: GitHub,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/GitHub.png}
   - {name: PTSite,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/Download_3.png}
-  - {name: Social,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/SNS.png}
+  - {name: Social,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/JOOX.png}
   - {name: TikTok,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/TikTok.png}
-  - {name: Stream,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/Streaming_1.png}
+  - {name: Stream,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/Streaming.png}
   - {name: Microsoft,   <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/Microsoft.png}
   - {name: Cloudflare,  <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/Cloudflare.png}
   - {name: 国外电商,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/Amazon.png}
