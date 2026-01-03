@@ -1,0 +1,233 @@
+# ========================
+# Name: Custom_Clash_Smart_Icon  
+# Designer: MayflyDestiny
+# version: v1-20260103
+# Date: 2026-01-03
+# ========================
+
+# ==================== 代理提供者 ====================
+# 注意：请提供您的机场订阅链接，并为每个机场命名
+proxy-providers:
+  订阅源名称:
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: DIRECT
+    url: '订阅源地址'
+    filter: '^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))'
+
+# ==================== 锚点配置 ====================
+# 策略组类型模板 - 定义不同的策略组基础配置
+BaseFB: &BaseFB {type: fallback, interval: 200, lazy: true, url: 'https://www.google.com/generate_204'}
+BaseCH: &BaseCH {type: load-balance, interval: 200, lazy: true, url: 'https://www.google.com/generate_204', strategy: consistent-hashing, hidden: true}
+BaseCR: &BaseCR {type: load-balance, interval: 200, lazy: true, url: 'https://www.google.com/generate_204', strategy: round-robin, hidden: true}
+BaseSmart: &BaseSmart {type: smart, interval: 200, lazy: true, url: 'https://www.google.com/generate_204', hidden: true, uselightgbm: true}
+
+# 节点筛选正则表达式 - 基于地理位置和关键词过滤
+FilterHK: &FilterHK '^(?=.*(?i)(港|🇭🇰|HK|Hong|HKG))(?!.*(排除1|排除2)).*$'
+FilterSG: &FilterSG '^(?=.*(?i)(坡|🇸🇬|SG|Sing|SIN|XSP))(?!.*(排除1|排除2)).*$'
+FilterJP: &FilterJP '^(?=.*(?i)(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK))(?!.*(尼日利亚|排除2)).*$'
+FilterUS: &FilterUS '^(?=.*(?i)(美|🇺🇸|US|USA|JFK|SJC|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD))(?!.*(Plus|Australia|5x)).*$'
+FilterTW: &FilterTW '^(?=.*(?i)(台|🇼🇸|🇹🇼|TW|tai|TPE|TSA|KHH))(?!.*(排除1|排除2)).*$'
+FilterUK: &FilterUK '^(?=.*(?i)(英|英国|UK|大不列颠|伦敦|Kingdom))(?!.*(排除1|排除2)).*$'
+FilterEU: &FilterEU '^(?=.*(?i)(奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU))(?!.*(排除1|排除2)).*$'
+FilterOT: &FilterOT '^(?!.*(DIRECT|直接连接|美|港|坡|台|新|日|韩|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|🇭🇰|🇼🇸|🇹🇼|🇸🇬|🇯🇵|🇰🇷|🇺🇸|🇬🇧|🇦🇹|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|HK|TW|SG|JP|KR|US|GB|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|HKG|TPE|TSA|KHH|SIN|XSP|NRT|HND|KIX|CTS|FUK|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD|LHR|LGW))'
+FilterAL: &FilterAL '^(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))'
+
+# 策略组代理列表模板 - 预定义的代理节点优先级排序
+SelectGS: &SelectGS {type: select, proxies: [香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动, 直接连接]}
+SelectPY: &SelectPY {type: select, proxies: [分组选择, 香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动, 直接连接]}
+SelectDC: &SelectDC {type: select, proxies: [直接连接, 分组选择, 香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动]}
+
+# ========================
+# 策略组定义
+# ========================
+proxy-groups:
+  # ==================== 主要策略组 ====================
+  - {name: 分组选择,     <<: *SelectGS, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Rocket.png}
+  
+  # ==================== 功能策略组 ====================
+  - {name: Games,       <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Game.png}
+  - {name: ChatAI,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png}
+  - {name: GitHub,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/GitHub.png}
+  - {name: PTSite,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Download_3.png}
+  - {name: Social,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/SNS.png}
+  - {name: TikTok,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/TikTok.png}
+  - {name: Stream,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Streaming_1.png}
+  - {name: Microsoft,   <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Microsoft.png}
+  - {name: Cloudflare,  <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Cloudflare.png}
+  - {name: 国外电商,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Amazon.png}
+  - {name: 网络检测,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Speedtest.png}
+  - {name: 国内直连,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Global.png}
+  - {name: 漏网之鱼,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png}
+  
+  # ==================== 特殊策略组 ====================
+  - {name: 直接连接,     type: select, interval: 200, proxies: [DIRECT], hidden: true, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Direct.png}
+
+  # ==================== 地区策略组 ====================
+  - {name: 香港故转,     <<: *BaseFB, proxies: [香港手动, 香港智选, 香港均衡-散列, 香港均衡-轮询], filter: *FilterHK, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png}
+  - {name: 台湾故转,     <<: *BaseFB, proxies: [台湾手动, 台湾智选, 台湾均衡-散列, 台湾均衡-轮询], filter: *FilterTW, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png}
+  - {name: 狮城故转,     <<: *BaseFB, proxies: [狮城手动, 狮城智选, 狮城均衡-散列, 狮城均衡-轮询], filter: *FilterSG, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png}
+  - {name: 日本故转,     <<: *BaseFB, proxies: [日本手动, 日本智选, 日本均衡-散列, 日本均衡-轮询], filter: *FilterJP, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png}
+  - {name: 美国故转,     <<: *BaseFB, proxies: [美国手动, 美国智选, 美国均衡-散列, 美国均衡-轮询], filter: *FilterUS, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png}
+  - {name: 欧盟故转,     <<: *BaseFB, proxies: [欧盟手动, 欧洲智选, 欧盟均衡-散列, 欧盟均衡-轮询], filter: *FilterEU, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/European_Union.png}
+
+  
+  # ==================== 手动选择组 ====================
+  - {name: 香港手动,     type: select, include-all: true, filter: *FilterHK, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Static.png}
+  - {name: 台湾手动,     type: select, include-all: true, filter: *FilterTW, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Static.png}
+  - {name: 狮城手动,     type: select, include-all: true, filter: *FilterSG, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Static.png}
+  - {name: 日本手动,     type: select, include-all: true, filter: *FilterJP, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Static.png}
+  - {name: 美国手动,     type: select, include-all: true, filter: *FilterUS, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Static.png}
+  - {name: 欧盟手动,     type: select, include-all: true, filter: *FilterEU, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Static.png}
+
+  # ==================== 智能选择组 ====================
+  # 地理策略层 - Smart智能选择，政策权重数值越大优先级越高，修改为关键词节点，比如 优:2;中:1;备:0.5，默认为1，优>中>备，使用时请修改
+  - {name: 香港智选,  <<: *BaseSmart, filter: *FilterHK, include-all: true, policy-priority: '.*(负载|电信|联通|移动).*:1.2', icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png}
+  - {name: 台湾智选,  <<: *BaseSmart, filter: *FilterTW, include-all: true, policy-priority: '.*(负载|电信|联通|移动).*:1.2', icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png}
+  - {name: 日本智选,  <<: *BaseSmart, filter: *FilterJP, include-all: true, policy-priority: '.*(负载|电信|联通|移动).*:1.2', icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png}
+  - {name: 狮城智选,  <<: *BaseSmart, filter: *FilterSG, include-all: true, policy-priority: '.*(负载|电信|联通|移动).*:1.2', icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png}
+  - {name: 美国智选,  <<: *BaseSmart, filter: *FilterUS, include-all: true, policy-priority: '.*(负载|电信|联通|移动).*:1.2', icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png}
+  - {name: 英国智选,  <<: *BaseSmart, filter: *FilterUK, include-all: true, policy-priority: '.*(负载|电信|联通|移动).*:1.2', icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_Kingdom.png}
+  - {name: 欧洲智选,  <<: *BaseSmart, filter: *FilterEU, include-all: true, policy-priority: '.*(负载|电信|联通|移动).*:1.2', icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/European_Union.png}
+  
+  # ==================== 负载均衡-散列 ====================
+  - {name: 香港均衡-散列, <<: *BaseCH, include-all: true, filter: *FilterHK, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png}
+  - {name: 台湾均衡-散列, <<: *BaseCH, include-all: true, filter: *FilterTW, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png}
+  - {name: 狮城均衡-散列, <<: *BaseCH, include-all: true, filter: *FilterSG, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png}
+  - {name: 日本均衡-散列, <<: *BaseCH, include-all: true, filter: *FilterJP, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png}
+  - {name: 美国均衡-散列, <<: *BaseCH, include-all: true, filter: *FilterUS, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png}
+  - {name: 欧盟均衡-散列, <<: *BaseCH, include-all: true, filter: *FilterEU, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png}
+
+  # ==================== 负载均衡-轮询 ====================
+  - {name: 香港均衡-轮询, <<: *BaseCR, include-all: true, filter: *FilterHK, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png}
+  - {name: 台湾均衡-轮询, <<: *BaseCR, include-all: true, filter: *FilterTW, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png}
+  - {name: 狮城均衡-轮询, <<: *BaseCR, include-all: true, filter: *FilterSG, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png}
+  - {name: 日本均衡-轮询, <<: *BaseCR, include-all: true, filter: *FilterJP, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png}
+  - {name: 美国均衡-轮询, <<: *BaseCR, include-all: true, filter: *FilterUS, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png}
+  - {name: 欧盟均衡-轮询, <<: *BaseCR, include-all: true, filter: *FilterEU, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png}
+  
+  # ==================== 其他策略组 ====================
+  - {name: 冷门手动,     type: select, include-all: true, filter: *FilterOT, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Europe_Map.png}
+  - {name: 全球手动,     type: select, include-all: true, filter: *FilterAL, icon: https://edgeone.gh-proxy.org/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Clubhouse.png}
+
+# ========================
+# 规则引擎（rules）
+# ========================
+rules:
+  
+  # =======节点规则集=======
+  - DOMAIN-SUFFIX,jp,日本故转
+  
+  # =======优先规则集=======
+  - GEOIP,private,国内直连,no-resolve
+  - GEOSITE,private,国内直连
+  - GEOSITE,steam@cn,国内直连
+  - GEOSITE,google-cn,国内直连
+  - GEOSITE,microsoft@cn,国内直连
+  - GEOSITE,cloudflare@cn,国内直连
+  - GEOSITE,category-games@cn,国内直连
+  - GEOSITE,category-ecommerce@cn,国内直连
+  - GEOSITE,category-speedtest@cn,国内直连
+  - GEOSITE,category-public-tracker,国内直连
+  - GEOSITE,category-game-platforms-download,国内直连
+  - RULE-SET,Custom_Direct_Domain,国内直连
+  - RULE-SET,Custom_Proxy_Domain,分组选择
+  - RULE-SET,Mayfly_Custom_Proxy,分组选择
+  
+  # =======游戏规则集=======
+  - GEOSITE,steam,Games
+  - GEOSITE,category-games,Games
+  
+  # =======AI规则集=======
+  - GEOSITE,category-ai-!cn,ChatAI
+  
+  # =======Github规则集=======
+  - GEOSITE,github,GitHub
+  
+  # =======PT规则集=======
+  - GEOSITE,category-pt,PTSite
+  
+  # =======社交规则集=======
+  - GEOIP,twitter,Social,no-resolve
+  - GEOIP,telegram,Social,no-resolve
+  - GEOIP,facebook,Social,no-resolve
+  - GEOSITE,x,Social
+  - GEOSITE,twitter,Social
+  - GEOSITE,telegram,Social
+  - GEOSITE,category-communication,Social
+  - GEOSITE,category-social-media-!cn,Social
+  
+  # =======TikTok规则集=======
+  - GEOSITE,tiktok,TikTok
+  
+  # =======影音规则集=======
+  - GEOIP,netflix,Stream,no-resolve
+  - GEOSITE,okx,Stream
+  - GEOSITE,hbo,Stream
+  - GEOSITE,bybit,Stream
+  - GEOSITE,amazon,Stream
+  - GEOSITE,disney,Stream
+  - GEOSITE,netflix,Stream
+  - GEOSITE,binance,Stream
+  - GEOSITE,youtube,Stream
+  - GEOSITE,spotify,Stream
+  - GEOSITE,category-entertainment,Stream
+  
+  # =======微软规则集=======
+  - GEOSITE,onedrive,Microsoft
+  - GEOSITE,microsoft,Microsoft
+  
+  # =======Cloudflare规则集=======
+  - GEOSITE,cloudflare,Cloudflare
+  
+  # =======购物规则集=======
+  - GEOSITE,category-ecommerce,国外电商
+  
+  # =======网络检测规则集=======
+  - RULE-SET,Mayfly_Custom_Check,网络检测
+  - GEOSITE,category-speedtest,网络检测
+  
+  # =======兜底规则集=======
+  - GEOIP,google,分组选择,no-resolve
+  - GEOSITE,gfw,分组选择
+  - GEOSITE,google,分组选择
+  - GEOSITE,geolocation-!cn,分组选择
+  - GEOSITE,category-scholar-!cn,分组选择
+  - GEOSITE,category-companies,分组选择
+  - GEOSITE,cn,国内直连
+  - GEOIP,cn,国内直连,no-resolve
+  - RULE-SET,ChinaMax,国内直连
+  - RULE-SET,China-ASN-combined,国内直连
+  
+  # =======候补规则集=======
+  - PROCESS-NAME,mosdns,DIRECT
+  - PROCESS-NAME,AdGuardHome,DIRECT
+  - MATCH,漏网之鱼
+
+# ========================
+# 补充规则集
+# ========================
+rule-anchor:
+  ## type：可选http/file/inline  behavior：可选domain/ipcidr/classical format：可选yaml/text/mrs
+  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
+  domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
+  class: &class {type: http, interval: 86400, behavior: classical, format: text}
+  yaml: &yaml {type: http, interval: 86400, behavior: classical, format: yaml}
+
+rule-providers:
+  
+  # 网络检测
+  Mayfly_Custom_Check: {<<: *class, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_List/refs/heads/main/Custom_Check.list"}
+  
+  # 国外域名/IP
+  Custom_Proxy_Domain: {<<: *domain, url: "https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Proxy_Domain.mrs"}
+  Mayfly_Custom_Proxy: {<<: *class, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_List/refs/heads/main/Custom_Proxy.list"}
+  
+  # 国内域名/IP
+  ChinaMax: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/ChinaMax/ChinaMax.list"}
+  China-ASN-combined: {<<: *ip, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/ipcidr/China-ASN-combined.mrs"}
+  Custom_Direct_Domain: {<<: *domain, url: "https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Direct_Domain.mrs"}

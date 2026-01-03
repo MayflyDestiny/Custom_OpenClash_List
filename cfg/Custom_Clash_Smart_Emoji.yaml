@@ -1,0 +1,265 @@
+# ========================
+# Name: Custom_Clash_Smart_Emoji  
+# Designer: MayflyDestiny
+# version: v1-20260103
+# Date: 2026-01-03
+# ========================
+
+# 机场节点订阅
+proxy-providers:
+  机场名称:
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: "🟢 直连"
+    url: 订阅地址
+
+proxies:
+- name: "🟢 直连"
+  type: direct
+  udp: true
+- name: "❌ 拒绝"
+  type: reject
+  udp: true
+
+# ========================
+# 策略组定义
+# ========================
+pr: &pr {type: select, proxies: [🟢 直连, 🚀 分组选择, 🔯 香港-故转, 🔯 台湾-故转, 🔯 日本-故转, 🔯 美国-故转, ♻️ 香港-智选, ♻️ 台湾-智选, ♻️ 日本-智选, ♻️ 美国-智选, ♻️ 所有-智选, 🇭🇰 香港-手选, 🇹🇼 台湾-手选, 🇯🇵 日本-手选, 🇺🇲 美国-手选, 🌐 所有-节点]}
+
+proxy-groups:
+  - {name: 🚀 分组选择, type: select, proxies: [🔯 香港-故转, 🔯 台湾-故转, 🔯 日本-故转, 🔯 美国-故转, ♻️ 香港-智选, ♻️ 台湾-智选, ♻️ 日本-智选, ♻️ 美国-智选, ♻️ 所有-智选, 🇭🇰 香港-手选, 🇹🇼 台湾-手选, 🇯🇵 日本-手选, 🇺🇲 美国-手选, 🌐 所有-节点]}
+
+  - {name: 🎮 Games,<<: *pr}
+  - {name: 🤖 ChatAI, <<: *pr}
+  - {name: 👨🏿‍💻 GitHub, <<: *pr}
+  - {name: 🧲 PTSite, <<: *pr}
+  - {name: 💬 Social, <<: *pr}
+  - {name: 🎶 TikTok, <<: *pr}
+  - {name: 📺 Stream, <<: *pr}
+  - {name: 🪟 Microsoft, <<: *pr}
+  - {name: ☁️ Cloudflare, <<: *pr}
+  - {name: 🛒 国外电商, <<: *pr}
+  - {name: ⏱️ 网络检测, <<: *pr}
+  - {name: 💫 全球直连, <<: *pr}
+  - {name: 🐟 漏网之鱼, <<: *pr}
+  
+# ========================
+# 手选分组（select）
+# ========================
+  - {name: 🇭🇰 香港-手选, type: select, include-all: true, filter: "(?=.*(香港|HK|Hong Kong|🇭🇰|HongKong)).*$"}
+  - {name: 🇹🇼 台湾-手选, type: select, include-all: true, filter: "(?=.*(台湾|台灣|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan)).*$"}
+  - {name: 🇯🇵 日本-手选, type: select, include-all: true, filter: "(?=.*(日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan)).*$"}
+  - {name: 🇺🇲 美国-手选, type: select, include-all: true, filter: "(?=.*(美|US|纽约|达拉斯|俄勒|凤凰城|费利蒙|拉斯|洛杉|圣何塞|圣克拉|西雅|芝加|🇺🇸|United States)).*$"}
+  
+# ========================
+# 故转分组（fallback）
+# ========================
+  - {name: 🔯 香港-故转, type: fallback, interval: 180, lazy: false, proxies: [🇭🇰 香港-手选, ♻️ 香港-智选]}
+  - {name: 🔯 台湾-故转, type: fallback, interval: 180, lazy: false, proxies: [🇹🇼 台湾-手选, ♻️ 台湾-智选]}
+  - {name: 🔯 日本-故转, type: fallback, interval: 180, lazy: false, proxies: [🇯🇵 日本-手选, ♻️ 日本-智选]}
+  - {name: 🔯 美国-故转, type: fallback, interval: 180, lazy: false, proxies: [🇺🇲 美国-手选, ♻️ 美国-智选]}
+
+# ========================
+# 智选分组（smart）
+# ========================
+  - name: ♻️ 香港-智选
+    type: smart
+    include-all: true
+    policy-priority: ".*红杏.*:0.8;.*(负载|联通).*:1.2"
+    uselightgbm: true
+    collectdata: true
+    health-check: 
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 60
+      tolerance: 2
+    strategy: sticky-sessions
+    interval: 180
+    filter: "(?=.*(广港|香港|HK|Hong Kong|🇭🇰|HongKong)).*$"
+ 
+  - name: ♻️ 台湾-智选
+    type: smart
+    include-all: true
+    policy-priority: ".*红杏.*:0.8;.*(负载|联通).*:1.2"
+    uselightgbm: true
+    collectdata: true
+    health-check: 
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 60
+      tolerance: 2
+    strategy: sticky-sessions
+    interval: 180
+    filter: "(?=.*(台湾|台灣|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan)).*$"
+
+  - name: ♻️ 日本-智选
+    type: smart
+    include-all: true
+    policy-priority: ".*红杏.*:0.8;.*(负载|联通).*:1.2"
+    uselightgbm: true
+    collectdata: true
+    health-check: 
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 60
+      tolerance: 2
+    strategy: sticky-sessions
+    interval: 180
+    filter: "(?=.*(日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan)).*$"
+
+  - name: ♻️ 美国-智选
+    type: smart
+    include-all: true
+    policy-priority: ".*红杏.*:0.8;.*(负载|联通).*:1.2"
+    uselightgbm: true
+    collectdata: true
+    health-check: 
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 60
+      tolerance: 2
+    strategy: sticky-sessions
+    interval: 180
+    filter: "(?=.*(美|US|纽约|波特兰|达拉斯|俄勒|凤凰城|费利蒙|拉斯|洛杉|圣何塞|圣克拉|西雅|芝加|🇺🇸|United States)).*$"
+
+  - name: ♻️ 所有-智选
+    type: smart
+    include-all: true
+    policy-priority: ".*红杏.*:0.8;.*(负载|联通).*:1.2"
+    uselightgbm: true
+    collectdata: true
+    health-check: 
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 60
+      tolerance: 2
+    strategy: sticky-sessions
+    interval: 180
+    filter: "^((?!(直连|拒绝|剩余|套餐)).)*$"
+
+# ========================
+# 所有节点（all）
+# ========================
+  - {name: 🌐 所有-节点, type: select, include-all: true, filter: "^((?!(直连|拒绝|剩余|套餐)).)*$"}
+
+# ========================
+# 规则引擎（rules）
+# ========================
+rules:
+  
+  # =======节点规则集=======
+  - DOMAIN-SUFFIX,jp,🔯 日本-故转
+  
+  # =======优先规则集=======
+  - GEOIP,private,💫 全球直连,no-resolve
+  - GEOSITE,private,💫 全球直连
+  - GEOSITE,steam@cn,💫 全球直连
+  - GEOSITE,google-cn,💫 全球直连
+  - GEOSITE,microsoft@cn,💫 全球直连
+  - GEOSITE,cloudflare@cn,💫 全球直连
+  - GEOSITE,category-games@cn,💫 全球直连
+  - GEOSITE,category-ecommerce@cn,💫 全球直连
+  - GEOSITE,category-speedtest@cn,💫 全球直连
+  - GEOSITE,category-public-tracker,💫 全球直连
+  - GEOSITE,category-game-platforms-download,💫 全球直连
+  - RULE-SET,Custom_Direct_Domain,💫 全球直连
+  - RULE-SET,Custom_Proxy_Domain,🚀 分组选择
+  - RULE-SET,Mayfly_Custom_Proxy,🚀 分组选择
+  
+  # =======游戏规则集=======
+  - GEOSITE,steam,🎮 Games
+  - GEOSITE,category-games,🎮 Games
+  
+  # =======AI规则集=======
+  - GEOSITE,category-ai-!cn,🤖 ChatAI
+  
+  # =======Github规则集=======
+  - GEOSITE,github,👨🏿‍💻 GitHub
+  
+  # =======PT规则集=======
+  - GEOSITE,category-pt,🧲 PTSite
+  
+  # =======社交规则集=======
+  - GEOIP,twitter,💬 Social,no-resolve
+  - GEOIP,telegram,💬 Social,no-resolve
+  - GEOIP,facebook,💬 Social,no-resolve
+  - GEOSITE,x,💬 Social
+  - GEOSITE,twitter,💬 Social
+  - GEOSITE,telegram,💬 Social
+  - GEOSITE,category-communication,💬 Social
+  - GEOSITE,category-social-media-!cn,💬 Social
+  
+  # =======TikTok规则集=======
+  - GEOSITE,tiktok,🎶 TikTok
+  
+  # =======影音规则集=======
+  - GEOIP,netflix,📺 Stream,no-resolve
+  - GEOSITE,okx,📺 Stream
+  - GEOSITE,hbo,📺 Stream
+  - GEOSITE,bybit,📺 Stream
+  - GEOSITE,amazon,📺 Stream
+  - GEOSITE,disney,📺 Stream
+  - GEOSITE,netflix,📺 Stream
+  - GEOSITE,binance,📺 Stream
+  - GEOSITE,youtube,📺 Stream
+  - GEOSITE,spotify,📺 Stream
+  - GEOSITE,category-entertainment,📺 Stream
+  
+  # =======微软规则集=======
+  - GEOSITE,onedrive,🪟 Microsoft
+  - GEOSITE,microsoft,🪟 Microsoft
+  
+  # =======Cloudflare规则集=======
+  - GEOSITE,cloudflare,☁️ Cloudflare
+  
+  # =======购物规则集=======
+  - GEOSITE,category-ecommerce,🛒 国外电商
+  
+  # =======网络检测规则集=======
+  - RULE-SET,Mayfly_Custom_Check,⏱️ 网络检测
+  - GEOSITE,category-speedtest,⏱️ 网络检测
+  
+  # =======兜底规则集=======
+  - GEOIP,google,🚀 分组选择,no-resolve
+  - GEOSITE,gfw,🚀 分组选择
+  - GEOSITE,google,🚀 分组选择
+  - GEOSITE,geolocation-!cn,🚀 分组选择
+  - GEOSITE,category-scholar-!cn,🚀 分组选择
+  - GEOSITE,category-companies,🚀 分组选择
+  - GEOSITE,cn,💫 全球直连
+  - GEOIP,cn,💫 全球直连,no-resolve
+  - RULE-SET,ChinaMax,💫 全球直连
+  - RULE-SET,China-ASN-combined,💫 全球直连
+  
+  # =======候补规则集=======
+  - PROCESS-NAME,mosdns,🟢 直连
+  - PROCESS-NAME,AdGuardHome,🟢 直连
+  - MATCH,🐟 漏网之鱼
+
+# ========================
+# 补充规则集
+# ========================
+rule-anchor:
+  ## type：可选http/file/inline  behavior：可选domain/ipcidr/classical format：可选yaml/text/mrs
+  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
+  domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
+  class: &class {type: http, interval: 86400, behavior: classical, format: text}
+  yaml: &yaml {type: http, interval: 86400, behavior: classical, format: yaml}
+
+rule-providers:
+  
+  # 网络检测
+  Mayfly_Custom_Check: {<<: *class, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_List/refs/heads/main/Custom_Check.list"}
+  
+  # 国外域名/IP
+  Custom_Proxy_Domain: {<<: *domain, url: "https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Proxy_Domain.mrs"}
+  Mayfly_Custom_Proxy: {<<: *class, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_List/refs/heads/main/Custom_Proxy.list"}
+  
+  # 国内域名/IP
+  ChinaMax: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/ChinaMax/ChinaMax.list"}
+  China-ASN-combined: {<<: *ip, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/ipcidr/China-ASN-combined.mrs"}
+  Custom_Direct_Domain: {<<: *domain, url: "https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Direct_Domain.mrs"}
