@@ -185,8 +185,6 @@ rules:
   - RULE-SET,China-ASN-combined,国内直连
   
   # =======候补规则集=======
-  - PROCESS-NAME,mosdns,直接连接
-  - PROCESS-NAME,AdGuardHome,直接连接
   - MATCH,漏网之鱼
 
 # ========================

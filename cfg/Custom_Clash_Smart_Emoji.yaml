@@ -237,8 +237,6 @@ rules:
   - RULE-SET,China-ASN-combined,💫 全球直连
   
   # =======候补规则集=======
-  - PROCESS-NAME,mosdns,🟢 直连
-  - PROCESS-NAME,AdGuardHome,🟢 直连
   - MATCH,🐟 漏网之鱼
 
 # ========================
