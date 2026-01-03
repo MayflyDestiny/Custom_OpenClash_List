@@ -64,9 +64,6 @@ proxy-groups:
   - {name: 国内直连,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/Global.png}
   - {name: 漏网之鱼,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/Final.png}
   
-  # ==================== 特殊策略组 ====================
-  - {name: 直接连接,     type: select, interval: 200, proxies: [DIRECT], hidden: true, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/Direct.png}
-
   # ==================== 地区策略组 ====================
   - {name: 香港故转,     <<: *BaseFB, proxies: [香港手动, 香港智选, 香港均衡-散列, 香港均衡-轮询], filter: *FilterHK, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/Hong_Kong.png}
   - {name: 台湾故转,     <<: *BaseFB, proxies: [台湾手动, 台湾智选, 台湾均衡-散列, 台湾均衡-轮询], filter: *FilterTW, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/Taiwan.png}
@@ -113,7 +110,8 @@ proxy-groups:
   # ==================== 其他策略组 ====================
   - {name: 冷门手动,     type: select, include-all: true, filter: *FilterOT, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/Europe_Map.png}
   - {name: 全球手动,     type: select, include-all: true, filter: *FilterAL, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/Clubhouse.png}
-
+  - {name: 直接连接,     type: select, interval: 200, proxies: [DIRECT], hidden: true, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/tree/main/IconSet/Color/Direct.png}
+  - {name: 拒绝访问,     type: select, interval: 200, proxies: [REJECT], hidden: true, icon: https://edgeone.gh-proxy.org/https://github.com/MayflyDestiny/Custom_OpenClash_Rules/blob/main/IconSet/Color/Reject.png}
 # ========================
 # 规则引擎（rules）
 # ========================
