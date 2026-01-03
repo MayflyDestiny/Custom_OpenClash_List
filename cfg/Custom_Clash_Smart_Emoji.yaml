@@ -253,11 +253,11 @@ rule-anchor:
 rule-providers:
   
   # 网络检测
-  Mayfly_Custom_Check: {<<: *class, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_List/refs/heads/main/Custom_Check.list"}
+  Mayfly_Custom_Check: {<<: *class, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Check.list"}
   
   # 国外域名/IP
   Custom_Proxy_Domain: {<<: *domain, url: "https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Proxy_Domain.mrs"}
-  Mayfly_Custom_Proxy: {<<: *class, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_List/refs/heads/main/Custom_Proxy.list"}
+  Mayfly_Custom_Proxy: {<<: *class, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Proxy.list"}
   
   # 国内域名/IP
   ChinaMax: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/ChinaMax/ChinaMax.list"}
