@@ -19,6 +19,15 @@ proxy-providers:
     url: 订阅源地址
     filter: '^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))'
 
+# ==================== 连接配置 ====================
+proxies:
+- name: "🟢 直连"
+  type: direct
+  udp: true
+- name: "❌ 拒绝"
+  type: reject
+  udp: true
+
 # ==================== 锚点配置 ====================
 # 策略组类型模板 - 定义不同的策略组基础配置
 BaseFB: &BaseFB {type: fallback, interval: 200, lazy: true, url: 'https://www.google.com/generate_204'}
@@ -37,11 +46,11 @@ FilterOT: &FilterOT '^(?!.*(DIRECT|直接连接|美|港|坡|台|新|日|韩|奥|
 FilterAL: &FilterAL '^(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))'
 
 # 策略组代理列表模板 - 预定义的代理节点优先级排序
-SelectGS: &SelectGS {type: select, proxies: [香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动, 直接连接]}
-SelectPY: &SelectPY {type: select, proxies: [分组选择, 香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动, 直接连接]}
-SelectDC: &SelectMK {type: select, proxies: [日本故转, 分组选择, 香港故转, 狮城故转, 美国故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动, 直接连接]}
-SelectAI: &SelectAI {type: select, proxies: [美国故转, 分组选择, 香港故转, 狮城故转, 日本故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动, 直接连接]}
-SelectDC: &SelectDC {type: select, proxies: [直接连接, 分组选择, 香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动]}
+SelectGS: &SelectGS {type: select, interval: 200, proxies: [香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动, 直接连接]}
+SelectPY: &SelectPY {type: select, interval: 200, proxies: [分组选择, 香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动, 直接连接]}
+SelectMK: &SelectMK {type: select, interval: 200, proxies: [日本故转, 分组选择, 香港故转, 狮城故转, 美国故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动, 直接连接]}
+SelectAI: &SelectAI {type: select, interval: 200, proxies: [美国故转, 分组选择, 香港故转, 狮城故转, 日本故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动, 直接连接]}
+SelectDC: &SelectDC {type: select, interval: 200, proxies: [直接连接, 分组选择, 香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动]}
 
 # ========================
 # 策略组定义
@@ -94,8 +103,8 @@ proxy-groups:
   # ==================== 其他策略组 ====================
   - {name: 冷门手动,     type: select, interval: 200, include-all: true, filter: *FilterOT, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Europe_Map.png}
   - {name: 全球手动,     type: select, interval: 200, include-all: true, filter: *FilterAL, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Clubhouse.png}
-  - {name: 直接连接,     type: select, interval: 200, proxies: [DIRECT], hidden: true, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Direct.png}
-  - {name: 拒绝访问,     type: select, interval: 200, proxies: [REJECT], hidden: true, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Reject.png}
+  - {name: 直接连接,     type: select, interval: 200, proxies: [🟢 直连], hidden: true, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Direct.png}
+  - {name: 拒绝访问,     type: select, interval: 200, proxies: [🚫 拒绝], hidden: true, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Reject.png}
 # ========================
 # 规则引擎（rules）
 # ========================
