@@ -38,6 +38,8 @@ FilterAL: &FilterAL '^(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|
 # 策略组代理列表模板 - 预定义的代理节点优先级排序
 SelectGS: &SelectGS {type: select, proxies: [香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动, 直接连接]}
 SelectPY: &SelectPY {type: select, proxies: [分组选择, 香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动, 直接连接]}
+SelectDC: &SelectMK {type: select, proxies: [日本故转, 分组选择, 香港故转, 狮城故转, 美国故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动, 直接连接]}
+SelectAI: &SelectAI {type: select, proxies: [美国故转, 分组选择, 香港故转, 狮城故转, 日本故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动, 直接连接]}
 SelectDC: &SelectDC {type: select, proxies: [直接连接, 分组选择, 香港故转, 狮城故转, 日本故转, 美国故转, 台湾故转, 欧盟故转, 冷门手动, 全球手动]}
 
 # ========================
@@ -49,7 +51,7 @@ proxy-groups:
   
   # ==================== 功能策略组 ====================
   - {name: Games,       <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Game.png}
-  - {name: ChatAI,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/AI.png}
+  - {name: ChatAI,      <<: *SelectAI, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/AI.png}
   - {name: GitHub,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/GitHub.png}
   - {name: PTSite,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Download.png}
   - {name: Social,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/JOOX.png}
@@ -57,7 +59,7 @@ proxy-groups:
   - {name: Stream,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Streaming.png}
   - {name: Microsoft,   <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Microsoft.png}
   - {name: Cloudflare,  <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Cloudflare.png}
-  - {name: 国外电商,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Amazon.png}
+  - {name: 国外电商,      <<: *SelectMK, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Amazon.png}
   - {name: 网络检测,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Speedtest.png}
   - {name: 国内直连,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Global.png}
   - {name: 漏网之鱼,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Final.png}
@@ -183,8 +185,8 @@ rules:
   - RULE-SET,China-ASN-combined,国内直连
   
   # =======候补规则集=======
-  - PROCESS-NAME,mosdns,DIRECT
-  - PROCESS-NAME,AdGuardHome,DIRECT
+  - PROCESS-NAME,mosdns,直接连接
+  - PROCESS-NAME,AdGuardHome,直接连接
   - MATCH,漏网之鱼
 
 # ========================
