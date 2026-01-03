@@ -22,8 +22,6 @@ proxy-providers:
 # ==================== 锚点配置 ====================
 # 策略组类型模板 - 定义不同的策略组基础配置
 BaseFB: &BaseFB {type: fallback, interval: 200, lazy: true, url: 'https://www.google.com/generate_204'}
-BaseCH: &BaseCH {type: load-balance, interval: 200, lazy: true, url: 'https://www.google.com/generate_204', strategy: consistent-hashing, hidden: true}
-BaseCR: &BaseCR {type: load-balance, interval: 200, lazy: true, url: 'https://www.google.com/generate_204', strategy: round-robin, hidden: true}
 BaseSmart: &BaseSmart {type: smart, interval: 200, lazy: true, url: 'https://www.google.com/generate_204', hidden: true, uselightgbm: true}
 
 # 节点筛选正则表达式 - 基于地理位置和关键词过滤
@@ -53,7 +51,7 @@ proxy-groups:
   - {name: Games,       <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Game.png}
   - {name: ChatAI,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/AI.png}
   - {name: GitHub,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/GitHub.png}
-  - {name: PTSite,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Download_3.png}
+  - {name: PTSite,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Download.png}
   - {name: Social,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/JOOX.png}
   - {name: TikTok,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/TikTok.png}
   - {name: Stream,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Streaming.png}
@@ -72,7 +70,6 @@ proxy-groups:
   - {name: 美国故转,     <<: *BaseFB, proxies: [美国手动, 美国智选, 美国均衡-散列, 美国均衡-轮询], filter: *FilterUS, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/United_States.png}
   - {name: 欧盟故转,     <<: *BaseFB, proxies: [欧盟手动, 欧洲智选, 欧盟均衡-散列, 欧盟均衡-轮询], filter: *FilterEU, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/European_Union.png}
 
-  
   # ==================== 手动选择组 ====================
   - {name: 香港手动,     type: select, include-all: true, filter: *FilterHK, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Static.png}
   - {name: 台湾手动,     type: select, include-all: true, filter: *FilterTW, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Static.png}
@@ -90,22 +87,6 @@ proxy-groups:
   - {name: 美国智选,  <<: *BaseSmart, filter: *FilterUS, include-all: true, policy-priority: '.*(负载|电信|联通|移动).*:1.2', icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/United_States.png}
   - {name: 英国智选,  <<: *BaseSmart, filter: *FilterUK, include-all: true, policy-priority: '.*(负载|电信|联通|移动).*:1.2', icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/United_Kingdom.png}
   - {name: 欧洲智选,  <<: *BaseSmart, filter: *FilterEU, include-all: true, policy-priority: '.*(负载|电信|联通|移动).*:1.2', icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/European_Union.png}
-  
-  # ==================== 负载均衡-散列 ====================
-  - {name: 香港均衡-散列, <<: *BaseCH, include-all: true, filter: *FilterHK, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin_1.png}
-  - {name: 台湾均衡-散列, <<: *BaseCH, include-all: true, filter: *FilterTW, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin_1.png}
-  - {name: 狮城均衡-散列, <<: *BaseCH, include-all: true, filter: *FilterSG, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin_1.png}
-  - {name: 日本均衡-散列, <<: *BaseCH, include-all: true, filter: *FilterJP, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin_1.png}
-  - {name: 美国均衡-散列, <<: *BaseCH, include-all: true, filter: *FilterUS, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin_1.png}
-  - {name: 欧盟均衡-散列, <<: *BaseCH, include-all: true, filter: *FilterEU, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin_1.png}
-
-  # ==================== 负载均衡-轮询 ====================
-  - {name: 香港均衡-轮询, <<: *BaseCR, include-all: true, filter: *FilterHK, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin.png}
-  - {name: 台湾均衡-轮询, <<: *BaseCR, include-all: true, filter: *FilterTW, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin.png}
-  - {name: 狮城均衡-轮询, <<: *BaseCR, include-all: true, filter: *FilterSG, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin.png}
-  - {name: 日本均衡-轮询, <<: *BaseCR, include-all: true, filter: *FilterJP, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin.png}
-  - {name: 美国均衡-轮询, <<: *BaseCR, include-all: true, filter: *FilterUS, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin.png}
-  - {name: 欧盟均衡-轮询, <<: *BaseCR, include-all: true, filter: *FilterEU, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin.png}
   
   # ==================== 其他策略组 ====================
   - {name: 冷门手动,     type: select, include-all: true, filter: *FilterOT, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Europe_Map.png}
