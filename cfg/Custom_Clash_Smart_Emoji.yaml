@@ -234,7 +234,7 @@ rules:
   - GEOSITE,cn,💫 全球直连
   - GEOIP,cn,💫 全球直连,no-resolve
   - RULE-SET,ChinaMax,💫 全球直连
-  - RULE-SET,China-ASN-combined,💫 全球直连
+  - RULE-SET,China-ASN-combined,💫 全球直连,no-resolve
   
   # =======候补规则集=======
   - MATCH,🐟 漏网之鱼
