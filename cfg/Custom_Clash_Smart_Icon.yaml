@@ -59,7 +59,7 @@ proxy-groups:
   - {name: 分组选择,      <<: *SelectGS, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Rocket.png}
   
   # ==================== 功能策略组 ====================
-  - {name: Games,       <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Game.png}
+  - {name: Games,       <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Game.png}
   - {name: ChatAI,      <<: *SelectAI, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/AI.png}
   - {name: GitHub,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/GitHub.png}
   - {name: PTSite,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Download.png}
