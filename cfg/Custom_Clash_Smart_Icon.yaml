@@ -179,14 +179,14 @@ rules:
   - GEOSITE,category-speedtest,网络检测
   
   # =======兜底规则集=======
+  - GEOIP,cn,国内直连,no-resolve
   - GEOIP,google,分组选择,no-resolve
   - GEOSITE,gfw,分组选择
   - GEOSITE,google,分组选择
   - GEOSITE,geolocation-!cn,分组选择
-  - GEOSITE,category-scholar-!cn,分组选择
   - GEOSITE,category-companies,分组选择
+  - GEOSITE,category-scholar-!cn,分组选择
   - GEOSITE,cn,国内直连
-  - GEOIP,cn,国内直连,no-resolve
   - RULE-SET,ChinaMax,国内直连
   - RULE-SET,China-ASN-combined,国内直连,no-resolve
 
