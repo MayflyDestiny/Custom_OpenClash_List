@@ -1,5 +1,5 @@
 # NAME: Custom_Proxy
-# 强制代理列表，来自个人收集
+# 强制代理域名列表，来自个人收集
 
 # OpenClash 首页 IP 地址探测
 DOMAIN-SUFFIX,ip.sb
@@ -13,6 +13,8 @@ DOMAIN-SUFFIX,xn--ngstr-lra8j.com
 DOMAIN-SUFFIX,mtalk.google.com
 # PS5 STUN
 DOMAIN-SUFFIX,stun.playstation.net
+# Twilio STUN
+DOMAIN-SUFFIX,stun.twilio.com
 # Cloudflare DNS
 IP-CIDR,1.1.1.1/32,no-resolve
 IP-CIDR,1.0.0.1/32,no-resolve
@@ -35,8 +37,11 @@ DOMAIN-SUFFIX,qichiyu.com
 DOMAIN-SUFFIX,sider.ai
 # Moviepilot
 DOMAIN-SUFFIX,movie-pilot.org
+# 糖果云
+DOMAIN-SUFFIX,candytally.xyz
 # 被墙地址
 DOMAIN-SUFFIX,7pzzv.us
+DOMAIN-SUFFIX,cosgenshinproxy.xyz
 DOMAIN-SUFFIX,tp-iu.cmastd.com
 DOMAIN-SUFFIX,cg51.com
 DOMAIN-SUFFIX,cast.fgegcqkk.xyz
@@ -50,6 +55,15 @@ DOMAIN-SUFFIX,qy0.ru
 DOMAIN-SUFFIX,hjpicc.hjpfe1.com
 
 # 以下域名待提交 PR
+# comic / add by Telegram user: Mayfly / Date: 2026-01-17 15:48:42
+DOMAIN-SUFFIX,comick.art
+DOMAIN-SUFFIX,h-comic.com
+DOMAIN-SUFFIX,18mh.org
+# 琉璃神社 / add by Telegram user: Mayfly / Date: 2026-01-17 00:30:05
+DOMAIN-SUFFIX,hacg.icu
+DOMAIN-SUFFIX,hacg.pics
+# 波仔博客 / add by Telegram user: Mayfly / Date: 2026-01-09 21:45:22
+DOMAIN-SUFFIX,v2rayssr.com
 # ACG盒子 / add by Telegram user: Mayfly / Date: 2026-01-01 05:57:03
 DOMAIN-SUFFIX,acgbox.link
 # 视频网站 / add by Telegram user: Mayfly / Date: 2025-12-31 19:40:49

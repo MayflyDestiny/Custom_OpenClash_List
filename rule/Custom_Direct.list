@@ -1,1 +1,9 @@
+# NAME: Custom_Direct
+# 强制直连域名列表，来自个人收集
 
+# Github代理加速
+DOMAIN-SUFFIX,gh-proxy.org
+
+# 以下域名待提交 PR
+# Sider浏览器插件 / add by Telegram user: Mayfly / Date: 2026-01-20 15:24:03
+DOMAIN-SUFFIX,chatgpt-sidebar.com
