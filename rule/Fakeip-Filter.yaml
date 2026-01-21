@@ -144,3 +144,8 @@ payload:
   - 'DOMAIN,+.uu.163.com'
   - 'DOMAIN,ps.res.netease.com'
   - 'DOMAIN,+.pub.3gppnetwork.org'
+  - 'DOMAIN,+.oray.com'
+  - 'DOMAIN,+.orayimg.com'
+  - 'DOMAIN,+.gcloudcs.com'
+  - 'DOMAIN,+.gcloudsdk.com'
+  - 'DOMAIN,+.dynv6.net'
