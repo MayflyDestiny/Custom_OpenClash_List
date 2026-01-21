@@ -44,10 +44,11 @@
 rule-providers:
   Custom_Proxy:
     type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/main/rule/Custom_Proxy.list"
-    path: ./rules/Custom_Proxy.list
     interval: 86400
+    behavior: domain
+    format: mrs
+    url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/main/rule/Custom_Proxy.mrs"
+    path: "./rules/Custom_Proxy"
 ```
 
 ### 使用配置模板

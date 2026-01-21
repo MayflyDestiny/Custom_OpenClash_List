@@ -168,6 +168,7 @@ rules:
   - GEOSITE,category-public-tracker,💫 全球直连
   - GEOSITE,category-game-platforms-download,💫 全球直连
   - RULE-SET,Custom_Direct_Domain,💫 全球直连
+  - RULE-SET,Mayfly_Custom_Direct,💫 全球直连
   - RULE-SET,Custom_Proxy_Domain,🚀 分组选择
   - RULE-SET,Mayfly_Custom_Proxy,🚀 分组选择
   
@@ -252,13 +253,14 @@ rule-anchor:
 rule-providers:
   
   # 网络检测
-  Mayfly_Custom_Check: {<<: *class, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Check.list"}
+  Mayfly_Custom_Check: {<<: *domain, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Check.mrs"}
   
   # 国外域名/IP
   Custom_Proxy_Domain: {<<: *domain, url: "https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Proxy_Domain.mrs"}
-  Mayfly_Custom_Proxy: {<<: *class, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Proxy.list"}
+  Mayfly_Custom_Proxy: {<<: *domain, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Proxy.mrs"}
   
   # 国内域名/IP
   ChinaMax: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/ChinaMax/ChinaMax.list"}
   China-ASN-combined: {<<: *ip, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/ipcidr/China-ASN-combined.mrs"}
   Custom_Direct_Domain: {<<: *domain, url: "https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Direct_Domain.mrs"}
+  Mayfly_Custom_Direct: {<<: *domain url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Direct.mrs"}

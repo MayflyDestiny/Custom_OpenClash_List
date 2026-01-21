@@ -27,6 +27,26 @@
   - 某些对 IP 限制严格的国内服务。
 - **建议策略**：指向 `DIRECT`。
 
+## 📝 文件格式说明
+
+本项目提供多种格式的规则文件以适配不同的客户端：
+
+### 1. `.list` (Classical)
+- **描述**：经典的每行一个域名的文本格式。
+- **适用**：OpenClash, Clash for Windows 等大多数基于 Clash 核心的客户端。
+- **编辑**：本项目主要维护此格式的源文件。
+
+### 2. `.yaml` (Domain Rule Set)
+- **描述**：标准的 YAML 格式规则集合 (`payload` 形式)。
+- **适用**：Clash Premium, Mihomo (Clash Meta)。
+- **来源**：由 GitHub Actions 自动从 `.list` 文件生成。
+
+### 3. `.mrs` (Mihomo Rule Set)
+- **描述**：Mihomo 专用的二进制规则集格式。
+- **特点**：编译后的二进制文件，加载速度极快，内存占用极低。
+- **适用**：Mihomo (Clash Meta) 核心。
+- **来源**：由 GitHub Actions 自动从 `.yaml` 文件编译生成。
+
 ## 🚀 引用方式
 
 在 OpenClash 配置文件中添加 Rule Providers：
@@ -35,24 +55,27 @@
 rule-providers:
   Custom_Check:
     type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/你的用户名/Custom_OpenClash_Rules/main/rule/Custom_Check.list"
-    path: ./rules/Custom_Check.list
     interval: 86400
+    behavior: domain
+    format: mrs
+    url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/main/rule/Custom_Check.mrs"
+    path: "./rules/Custom_Check"
 
   Custom_Proxy:
     type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/你的用户名/Custom_OpenClash_Rules/main/rule/Custom_Proxy.list"
-    path: ./rules/Custom_Proxy.list
     interval: 86400
+    behavior: domain
+    format: mrs
+    url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/main/rule/Custom_Proxy.mrs"
+    path: "./rules/Custom_Proxy"
 
   Custom_Direct:
     type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/你的用户名/Custom_OpenClash_Rules/main/rule/Custom_Direct.list"
-    path: ./rules/Custom_Direct.list
     interval: 86400
+    behavior: domain
+    format: mrs
+    url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/main/rule/Custom_Direct.mrs"
+    path: "./rules/Custom_Direct"
 ```
 
 然后在 `rules` 部分引用：
