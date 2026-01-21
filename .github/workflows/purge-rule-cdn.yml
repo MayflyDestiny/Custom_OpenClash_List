@@ -38,15 +38,25 @@ jobs:
         run: |
           REPO="${{ github.repository }}"
           while IFS= read -r file; do
-            URL="https://purge.jsdelivr.net/gh/${REPO}@main/${file}"
+            CDN_URL="https://cdn.jsdelivr.net/gh/${REPO}@main/${file}"
+            PURGE_URL="https://purge.jsdelivr.net/gh/${REPO}@main/${file}"
+
+            echo "Waiting for $file to be available on jsDelivr..."
+            for i in {1..10}; do
+              http_code=$(curl -s -o /dev/null -w "%{http_code}" "$CDN_URL")
+              [[ "$http_code" == "200" ]] && break
+              echo "  $i/10  CDN not ready yet, wait 5s..."
+              sleep 5
+            done
+
             echo "Purging $file ..."
             for i in {1..3}; do
-              resp=$(curl -s -w "%{http_code}" -o purge.json "$URL")
+              resp=$(curl -s -w "%{http_code}" -o purge.json "$PURGE_URL")
               if [[ "$resp" == "200" ]] && grep -q '"status":"finished"' purge.json; then
                 echo "✅ $file purged"
                 break
               else
-                echo "⚠️  attempt $i failed, retry in 5 s..."
+                echo "⚠️  purge attempt $i failed, retry in 5s..."
                 sleep 5
               fi
               [[ $i -eq 3 ]] && echo "❌ $file purge failed finally"
