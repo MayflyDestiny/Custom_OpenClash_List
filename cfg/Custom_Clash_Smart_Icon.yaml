@@ -220,4 +220,4 @@ rule-providers:
   ChinaMax: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/ChinaMax/ChinaMax.list"}
   China-ASN-combined: {<<: *ip, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/ipcidr/China-ASN-combined.mrs"}
   Custom_Direct_Domain: {<<: *domain, url: "https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Direct_Domain.mrs"}
-  Mayfly_Custom_Direct: {<<: *domain url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Direct.mrs"}
+  Mayfly_Custom_Direct: {<<: *domain, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Direct.mrs"}
