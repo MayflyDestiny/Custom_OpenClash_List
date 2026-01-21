@@ -165,54 +165,54 @@ SelectDC: &SelectDC {type: select, interval: 200, proxies: [直接连接, 分组
 # ========================
 proxy-groups:
   # ==================== 主要策略组 ====================
-  - {name: 分组选择,      <<: *SelectGS, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Rocket.png}
+  - {name: 分组选择,      <<: *SelectGS, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Rocket.png}
   
   # ==================== 功能策略组 ====================
-  - {name: Games,       <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Game.png}
-  - {name: ChatAI,      <<: *SelectAI, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/AI.png}
-  - {name: GitHub,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/GitHub.png}
-  - {name: PTSite,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Download.png}
-  - {name: Social,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/JOOX.png}
-  - {name: TikTok,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/TikTok.png}
-  - {name: Stream,      <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Streaming.png}
-  - {name: Microsoft,   <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Microsoft.png}
-  - {name: Cloudflare,  <<: *SelectPY, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Cloudflare.png}
-  - {name: 国外电商,      <<: *SelectMK, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Amazon.png}
-  - {name: 网络检测,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Speedtest.png}
-  - {name: 国内直连,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Global.png}
-  - {name: 漏网之鱼,      <<: *SelectDC, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Final.png}
+  - {name: Games,       <<: *SelectPY, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Game.png}
+  - {name: ChatAI,      <<: *SelectAI, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/AI.png}
+  - {name: GitHub,      <<: *SelectPY, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/GitHub.png}
+  - {name: PTSite,      <<: *SelectDC, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Download.png}
+  - {name: Social,      <<: *SelectPY, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/JOOX.png}
+  - {name: TikTok,      <<: *SelectPY, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/TikTok.png}
+  - {name: Stream,      <<: *SelectPY, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Streaming.png}
+  - {name: Microsoft,   <<: *SelectDC, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Microsoft.png}
+  - {name: Cloudflare,  <<: *SelectPY, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Cloudflare.png}
+  - {name: 国外电商,      <<: *SelectMK, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Amazon.png}
+  - {name: 网络检测,      <<: *SelectDC, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Speedtest.png}
+  - {name: 国内直连,      <<: *SelectDC, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Global.png}
+  - {name: 漏网之鱼,      <<: *SelectDC, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Final.png}
   
   # ==================== 手动选择组 ====================
-  - {name: 香港手动,     <<: *BaseSL, filter: *FilterHK, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Hong_Kong.png}
-  - {name: 台湾手动,     <<: *BaseSL, filter: *FilterTW, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Taiwan.png}
-  - {name: 狮城手动,     <<: *BaseSL, filter: *FilterSG, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Singapore.png}
-  - {name: 日本手动,     <<: *BaseSL, filter: *FilterJP, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Japan.png}
-  - {name: 美国手动,     <<: *BaseSL, filter: *FilterUS, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/United_States.png}
-  - {name: 欧盟手动,     <<: *BaseSL, filter: *FilterEU, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/European_Union.png}
+  - {name: 香港手动,     <<: *BaseSL, filter: *FilterHK, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Hong_Kong.png}
+  - {name: 台湾手动,     <<: *BaseSL, filter: *FilterTW, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Taiwan.png}
+  - {name: 狮城手动,     <<: *BaseSL, filter: *FilterSG, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Singapore.png}
+  - {name: 日本手动,     <<: *BaseSL, filter: *FilterJP, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Japan.png}
+  - {name: 美国手动,     <<: *BaseSL, filter: *FilterUS, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/United_States.png}
+  - {name: 欧盟手动,     <<: *BaseSL, filter: *FilterEU, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/European_Union.png}
 
 
   # ==================== 地区策略组 ====================
-  - {name: 香港故转,     <<: *BaseFB, proxies: [香港手动, 香港智选], filter: *FilterHK, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin.png}
-  - {name: 台湾故转,     <<: *BaseFB, proxies: [台湾手动, 台湾智选], filter: *FilterTW, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin.png}
-  - {name: 狮城故转,     <<: *BaseFB, proxies: [狮城手动, 狮城智选], filter: *FilterSG, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin.png}
-  - {name: 日本故转,     <<: *BaseFB, proxies: [日本手动, 日本智选], filter: *FilterJP, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin.png}
-  - {name: 美国故转,     <<: *BaseFB, proxies: [美国手动, 美国智选], filter: *FilterUS, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin.png}
-  - {name: 欧盟故转,     <<: *BaseFB, proxies: [欧盟手动, 欧盟智选], filter: *FilterEU, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin.png}
+  - {name: 香港故转,     <<: *BaseFB, proxies: [香港手动, 香港智选], filter: *FilterHK, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Round_Robin.png}
+  - {name: 台湾故转,     <<: *BaseFB, proxies: [台湾手动, 台湾智选], filter: *FilterTW, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Round_Robin.png}
+  - {name: 狮城故转,     <<: *BaseFB, proxies: [狮城手动, 狮城智选], filter: *FilterSG, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Round_Robin.png}
+  - {name: 日本故转,     <<: *BaseFB, proxies: [日本手动, 日本智选], filter: *FilterJP, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Round_Robin.png}
+  - {name: 美国故转,     <<: *BaseFB, proxies: [美国手动, 美国智选], filter: *FilterUS, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Round_Robin.png}
+  - {name: 欧盟故转,     <<: *BaseFB, proxies: [欧盟手动, 欧盟智选], filter: *FilterEU, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Round_Robin.png}
 
   # ==================== 智能选择组 ====================
   # 地理策略层 - Smart智能选择，可以添加policy-priority: '香港:2;台湾:1;新加坡:0.2'字段调整权重，权重数值越大优先级越高，修改为关键词节点，比如 香港:2;台湾:1;新加坡:0.2，默认为1，香港>台湾>新加坡，使用时请修改
-  - {name: 香港智选,      <<: *BaseSmart, filter: *FilterHK, include-all: true, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin_1.png}
-  - {name: 台湾智选,      <<: *BaseSmart, filter: *FilterTW, include-all: true, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin_1.png}
-  - {name: 日本智选,      <<: *BaseSmart, filter: *FilterJP, include-all: true, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin_1.png}
-  - {name: 狮城智选,      <<: *BaseSmart, filter: *FilterSG, include-all: true, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin_1.png}
-  - {name: 美国智选,      <<: *BaseSmart, filter: *FilterUS, include-all: true, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin_1.png}
-  - {name: 欧盟智选,      <<: *BaseSmart, filter: *FilterEU, include-all: true, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Round_Robin_1.png}
+  - {name: 香港智选,      <<: *BaseSmart, filter: *FilterHK, include-all: true, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Round_Robin_1.png}
+  - {name: 台湾智选,      <<: *BaseSmart, filter: *FilterTW, include-all: true, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Round_Robin_1.png}
+  - {name: 日本智选,      <<: *BaseSmart, filter: *FilterJP, include-all: true, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Round_Robin_1.png}
+  - {name: 狮城智选,      <<: *BaseSmart, filter: *FilterSG, include-all: true, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Round_Robin_1.png}
+  - {name: 美国智选,      <<: *BaseSmart, filter: *FilterUS, include-all: true, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Round_Robin_1.png}
+  - {name: 欧盟智选,      <<: *BaseSmart, filter: *FilterEU, include-all: true, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Round_Robin_1.png}
   
   # ==================== 其他策略组 ====================
-  - {name: 冷门手动,     type: select, interval: 200, include-all: true, filter: *FilterOT, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Europe_Map.png}
-  - {name: 全球手动,     type: select, interval: 200, include-all: true, filter: *FilterAL, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Clubhouse.png}
-  - {name: 直接连接,     type: select, interval: 200, proxies: [🟢 直连], hidden: true, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Direct.png}
-  - {name: 拒绝访问,     type: select, interval: 200, proxies: [⛔ 拒绝], hidden: true, icon: https://edgeone.gh-proxy.org/https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/IconSet/Color/Reject.png}
+  - {name: 冷门手动,     type: select, interval: 200, include-all: true, filter: *FilterOT, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Europe_Map.png}
+  - {name: 全球手动,     type: select, interval: 200, include-all: true, filter: *FilterAL, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Clubhouse.png}
+  - {name: 直接连接,     type: select, interval: 200, proxies: [🟢 直连], hidden: true, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Direct.png}
+  - {name: 拒绝访问,     type: select, interval: 200, proxies: [⛔ 拒绝], hidden: true, icon: https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/IconSet/Color/Reject.png}
 # ========================
 # 规则引擎（rules）
 # ========================
@@ -318,17 +318,17 @@ rule-anchor:
 
 rule-providers:
   # 网络检测
-  Mayfly_Custom_Check: {<<: *domain, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Check.mrs"}
+  Mayfly_Custom_Check: {<<: *domain, url: "https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/rule/Custom_Check.mrs"}
   
   # 国外域名/IP
-  Custom_Proxy_Domain: {<<: *domain, url: "https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Proxy_Domain.mrs"}
-  Mayfly_Custom_Proxy: {<<: *domain, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Proxy.mrs"}
+  Custom_Proxy_Domain: {<<: *domain, url: "https://testingcf.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Custom_Proxy_Domain.mrs"}
+  Mayfly_Custom_Proxy: {<<: *domain, url: "https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/rule/Custom_Proxy.mrs"}
   
   # 国内域名/IP
-  ChinaMax: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/ChinaMax/ChinaMax.list"}
-  China-ASN-combined: {<<: *ip, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/ipcidr/China-ASN-combined.mrs"}
-  Custom_Direct_Domain: {<<: *domain, url: "https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Direct_Domain.mrs"}
-  Mayfly_Custom_Direct: {<<: *domain, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Direct.mrs"}
+  ChinaMax: {<<: *class, url: "https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaMax/ChinaMax.list"}
+  China-ASN-combined: {<<: *ip, url: "https://testingcf.jsdelivr.net/gh/qljsyph/ruleset-icon@main/mihomo/ipcidr/China-ASN-combined.mrs"}
+  Custom_Direct_Domain: {<<: *domain, url: "https://testingcf.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Custom_Direct_Domain.mrs"}
+  Mayfly_Custom_Direct: {<<: *domain, url: "https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/rule/Custom_Direct.mrs"}
 
   # Fakeip-Filter
-  Fakeip-Filter: {<<: *domain, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/rule/Fakeip-Filter.mrs"}
+  Fakeip-Filter: {<<: *domain, url: "https://testingcf.jsdelivr.net/gh/MayflyDestiny/Custom_OpenClash_Rules@main/rule/Fakeip-Filter.mrs"}
