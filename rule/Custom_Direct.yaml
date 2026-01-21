@@ -1,0 +1,6 @@
+# Generated from rule/Custom_Direct.list
+# REPO: https://github.com/MayflyDestiny/Custom_OpenClash_Rules
+# SOURCE: https://github.com/MayflyDestiny/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
+payload:
+  - '+.gh-proxy.org'
+  - '+.chatgpt-sidebar.com'
