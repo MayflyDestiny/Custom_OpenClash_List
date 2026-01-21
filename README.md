@@ -17,7 +17,7 @@
 
 - **`Custom_Direct.list`**  
   直连规则列表。  
-  *(目前为空，可根据需要自行添加国内域名或无需代理的域名)*
+  *包含：gh-proxy.org, chatgpt-sidebar.com 等无需代理访问的服务。*
 
 ### 2. 配置模板 (`cfg/`)
 提供了两款基于 OpenClash 的配置模板，预设了策略组和分流规则。
