@@ -18,11 +18,121 @@ proxy-providers:
     proxy: "🟢 直连"
     url: 订阅源地址
 
+# ==================== 核心配置 ====================
+# 基础配置
+mode: rule
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7895
+ipv6: true
+allow-lan: true
+unified-delay: true
+tcp-concurrent: true
+log-level: warning
+bind-address: '*'
+find-process-mode: 'always'
+global-client-fingerprint: chrome
+keep-alive-interval: 15
+keep-alive-idle: 600
+
+# 管理面板配置
+external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip
+external-ui-name: zashboard
+external-ui: ui
+external-controller: 127.0.0.1:9090
+secret: password  # 请修改为您的自定义密码
+
+# 数据库配置
+lgbm-auto-update: true
+lgbm-url: https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model.bin
+lgbm-update-interval: 72
+profile:
+  smart-collector-size: 100.0
+  store-selected: true
+  store-fake-ip: true
+geox-url:
+  mmdb: https://testingcf.jsdelivr.net/gh/alecthw/mmdb_china_ip_list@release/Country.mmdb
+  geoip: https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat
+  geosite: https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
+  asn: https://testingcf.jsdelivr.net/gh/xishang0128/geoip@release/GeoLite2-ASN.mmdb
+
+# 认证配置
+authentication:
+  - Clash:password  #设置 SOCKS5/HTTP(S) 认证信息：请修改为您的自定义用户名和自定义密码
+skip-auth-prefixes:
+  - 192.168.0.0/16
+  - 127.0.0.1/8
+
+# 流量嗅探
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  skip-domain:
+    - "Mijia Cloud"
+    - dlg.io.mi.com
+    - "+.oray.com"
+    - "+.sunlogin.net"
+    - "+.push.apple.com"
+  force-domain:
+    - "+.netflix.com"
+    - "+.nflxvideo.net"
+    - "+.amazonaws.com"
+    - "+.media.dssott.com"
+  parse-pure-ip: true  
+
+# TUN模式配置
+tun:
+  enable: false
+  stack: mixed
+  dns-hijack:
+    - "any:53"
+    - "tcp://any:53"
+  auto-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+
+hosts:
+  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  doh.pub: [1.12.12.12, 1.12.12.21, 120.53.53.53]
+  dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
+  cloudflare-dns.com: [1.1.1.1, 1.0.0.1, 2606:4700:4700::1111, 2606:4700:4700::1001]
+    
+# DNS配置
+dns:
+  enable: true
+  ipv6: true
+  use-hosts: true
+  enhanced-mode: fake-ip
+  listen: 0.0.0.0:9090
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-range6: fdfe:dcba:9876::1/64
+  fake-ip-filter-mode: blacklist
+  respect-rules: false
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  fake-ip-filter:
+  - rule-set:Fakeip-Filter
+  - geosite:cn
+  - geosite:category-games
+  - geosite:apple-cn
+  - geosite:google-cn
+
+# ==================== 连接配置 ====================
 proxies:
 - name: "🟢 直连"
   type: direct
   udp: true
-- name: "❌ 拒绝"
+- name: "⛔ 拒绝"
   type: reject
   udp: true
 
@@ -264,3 +374,6 @@ rule-providers:
   China-ASN-combined: {<<: *ip, url: "https://raw.githubusercontent.com/qljsyph/ruleset-icon/refs/heads/main/mihomo/ipcidr/China-ASN-combined.mrs"}
   Custom_Direct_Domain: {<<: *domain, url: "https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Direct_Domain.mrs"}
   Mayfly_Custom_Direct: {<<: *domain, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Direct.mrs"}
+
+  # Fakeip-Filter
+  Fakeip-Filter: {<<: *domain, url: "https://raw.githubusercontent.com/MayflyDestiny/Custom_OpenClash_Rules/refs/heads/main/rule/Fakeip-Filter.mrs"}

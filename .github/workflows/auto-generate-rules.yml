@@ -31,7 +31,7 @@ jobs:
           echo "mihomo ${MIHOMO_VERSION} installed successfully"
       - name: Generate YAML from LIST files
         run: |
-          FILES=("Custom_Check" "Custom_Direct" "Custom_Proxy")
+          FILES=("Custom_Check" "Custom_Direct" "Custom_Proxy" "Fakeip-Filter")
           for base_name in "${FILES[@]}"; do
             list_file="rule/${base_name}.list"
             yaml_file="rule/${base_name}.yaml"
