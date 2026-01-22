@@ -124,9 +124,6 @@ dns:
   fake-ip-filter:
   - rule-set:Fakeip-Filter
   - geosite:cn
-  - geosite:category-games
-  - geosite:apple-cn
-  - geosite:google-cn
 
 # ==================== 连接配置 ====================
 proxies:
@@ -217,6 +214,10 @@ proxy-groups:
 # 规则引擎（rules）
 # ========================
 rules:
+  # =======特殊规则集=======
+  - DOMAIN-KEYWORD,-cn,直接连接
+  - DOMAIN-SUFFIX,jp,日本故转
+  
   # =======优先规则集=======
   - GEOIP,private,国内直连,no-resolve
   - GEOSITE,private,国内直连
@@ -300,10 +301,6 @@ rules:
   - RULE-SET,Global,分组选择
   - RULE-SET,ChinaMax,国内直连
   - RULE-SET,China-ASN-combined,国内直连,no-resolve
-
-  # =======特殊规则集=======
-  - DOMAIN-KEYWORD,-cn,直接连接
-  - DOMAIN-SUFFIX,jp,日本故转
   
   # =======候补规则集=======
   - MATCH,漏网之鱼

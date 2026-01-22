@@ -123,9 +123,6 @@ dns:
   fake-ip-filter:
   - rule-set:Fakeip-Filter
   - geosite:cn
-  - geosite:category-games
-  - geosite:apple-cn
-  - geosite:google-cn
 
 # ==================== 连接配置 ====================
 proxies:
@@ -260,9 +257,9 @@ proxy-groups:
 # ========================
 # 规则引擎（rules）
 # ========================
-rules:
-  
-  # =======节点规则集=======
+rules:  
+  # =======特殊规则集=======
+  - DOMAIN-KEYWORD,-cn,🟢 直连
   - DOMAIN-SUFFIX,jp,🔯 日本-故转
   
   # =======优先规则集=======
