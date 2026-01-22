@@ -72,6 +72,12 @@ jobs:
               exit 1
             fi
           done
+      - name: Purge jsDelivr CDN
+        run: |
+          cd ./rule/ || exit 1
+          for file in $(ls); do
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@rule/${file}"
+          done
       - name: Push changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
