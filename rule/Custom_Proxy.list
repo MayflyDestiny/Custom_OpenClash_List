@@ -18,47 +18,29 @@ DOMAIN-SUFFIX,stun.twilio.com
 # 嵌入式相关
 DOMAIN-SUFFIX,platformio.org
 DOMAIN-SUFFIX,arduino.cc
-# PT 相关
-DOMAIN-SUFFIX,dmhy.org
 # EA Desktop 云同步
 DOMAIN-SUFFIX,cloudsync-prod.s3.us-east-1.amazonaws.com
 # HoYoLAB
 DOMAIN-SUFFIX,hoyolab.com
 # OneDrive 网页版
 DOMAIN-SUFFIX,onedrive.live.com
-# 524游戏站
-DOMAIN-SUFFIX,www.524game.com
-# 七尺宇播客
-DOMAIN-SUFFIX,qichiyu.com
-# Sider-AI
-DOMAIN-SUFFIX,sider.ai
-# Moviepilot
-DOMAIN-SUFFIX,movie-pilot.org
-# 糖果云
-DOMAIN-SUFFIX,candytally.xyz
-# 被墙地址
-DOMAIN-SUFFIX,7pzzv.us
-DOMAIN-SUFFIX,cosgenshinproxy.xyz
-DOMAIN-SUFFIX,tp-iu.cmastd.com
-DOMAIN-SUFFIX,cg51.com
-DOMAIN-SUFFIX,cast.fgegcqkk.xyz
-DOMAIN-SUFFIX,diygod.cc
+# 海角
 DOMAIN-SUFFIX,haijiaolove.xyz
 DOMAIN-SUFFIX,haijiaoluv.top
-DOMAIN-SUFFIX,ipfs.crossbell.io
-DOMAIN-SUFFIX,hembed.com
-DOMAIN-SUFFIX,plyr.io
-DOMAIN-SUFFIX,qy0.ru
-DOMAIN-SUFFIX,hjpicc.hjpfe1.com
+# 524游戏站
+DOMAIN-SUFFIX,www.524game.com
+# 51吃瓜网
+DOMAIN-SUFFIX,cg51.com
+# Sider-AI
+DOMAIN-SUFFIX,sider.ai
+# 糖果云
+DOMAIN-SUFFIX,candytally.xyz
 
 # 以下域名待提交 PR
 # comic / add by Telegram user: Mayfly / Date: 2026-01-17 15:48:42
 DOMAIN-SUFFIX,comick.art
 DOMAIN-SUFFIX,h-comic.com
 DOMAIN-SUFFIX,18mh.org
-# 琉璃神社 / add by Telegram user: Mayfly / Date: 2026-01-17 00:30:05
-DOMAIN-SUFFIX,hacg.icu
-DOMAIN-SUFFIX,hacg.pics
 # 波仔博客 / add by Telegram user: Mayfly / Date: 2026-01-09 21:45:22
 DOMAIN-SUFFIX,v2rayssr.com
 # ACG盒子 / add by Telegram user: Mayfly / Date: 2026-01-01 05:57:03
