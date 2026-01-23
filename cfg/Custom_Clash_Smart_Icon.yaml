@@ -119,10 +119,21 @@ dns:
   fake-ip-filter-mode: blacklist
   respect-rules: false
   nameserver:
+    - https://dns.cloudflare.com/dns-query
+    - https://dns.google/dns-query
+  nameserver-policy:
+    "geosite:cn,private":
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
+  direct-nameserver:
+    - tls://223.5.5.5
+    - tls://223.6.6.6
+  proxy-server-nameserver:
+    - tls://1.1.1.1
+    - tls://8.8.8.8
   fake-ip-filter:
   - rule-set:Fakeip-Filter
+  - geosite:private
   - geosite:cn
 
 # ==================== 连接配置 ====================
