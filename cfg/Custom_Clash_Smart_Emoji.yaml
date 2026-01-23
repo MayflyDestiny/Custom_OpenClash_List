@@ -310,6 +310,7 @@ rules:
   - GEOSITE,x,💬 Social
   - GEOSITE,twitter,💬 Social
   - GEOSITE,telegram,💬 Social
+  - GEOSITE,facebook,💬 Social
   - GEOSITE,category-communication,💬 Social
   - GEOSITE,category-social-media-!cn,💬 Social
   
@@ -341,8 +342,9 @@ rules:
   - GEOSITE,category-ecommerce,🛒 国外电商
   
   # =======网络检测规则集=======
-  - RULE-SET,Mayfly_Custom_Check,⏱️ 网络检测
   - GEOSITE,category-speedtest,⏱️ 网络检测
+  - GEOSITE,category-ip-geo-detect,⏱️ 网络检测
+  - RULE-SET,Mayfly_Custom_Check,⏱️ 网络检测
   
   # =======兜底规则集=======
   - GEOIP,google,🚀 分组选择,no-resolve
