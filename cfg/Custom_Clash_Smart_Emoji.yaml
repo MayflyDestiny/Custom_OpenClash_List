@@ -112,7 +112,7 @@ dns:
   ipv6: true
   use-hosts: true
   enhanced-mode: fake-ip
-  listen: 0.0.0.0:9090
+  listen: 0.0.0.0:7874
   fake-ip-range: 198.18.0.1/16
   fake-ip-range6: fdfe:dcba:9876::1/64
   fake-ip-filter-mode: blacklist
